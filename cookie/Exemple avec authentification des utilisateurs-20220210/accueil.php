@@ -1,3 +1,6 @@
+<!-- Le premier appel de l’URL http://.../accueil.php provoque la redirection de l’utilisateur vers la page d’identification ; 
+après une identification réussie, l’utilisateur revient sur la page 1 qui affiche ses informations  -->
+
 <?php 
 // Ouvrir/réactiver la session. 
 session_start(); 
@@ -17,17 +20,16 @@ if (! isset($_SESSION['identifiant'])) {
   // => l'utilisateur est connecté. 
   // => récupérer les données de session utilisées dans  
   //    le script. 
-  $date = $_SESSION ['date'];
+  $date = $_SESSION['date'];
   $identifiant= $_SESSION['identifiant']; 
   // Récupérer l'identifiant de la session (pour l'exemple). 
-$session = session_id(); 
+  $session = session_id(); 
   // Préparer un message. 
   $message = "Session : $session - $identifiant - $date"; 
 } 
 // Détermination de la date et de l'heure actuelle (pas celle 
 // de l'ouverture de la session). 
-$actuel = 'Nous sommes le '.date('d/m/Y')
-          .' ; il est '.date('H:i:s'); 
+$actuel = 'Nous sommes le '.date('d/m/Y').' ; il est '.date('H:i:s'); 
 ?>
 
 <!DOCTYPE html>  
