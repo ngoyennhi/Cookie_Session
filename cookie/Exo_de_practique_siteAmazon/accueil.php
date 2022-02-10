@@ -1,3 +1,13 @@
+<?php session_start(); // à mettre tout en haut de page
+// c'est un tableau... 
+// a chaque fois on visite la page, on va mettre le temps comme un indicateur dans le tableau
+// page c'est un tableau
+// nomPage c'est un index dans le tableau
+$_SESSION['page']['accueil'] = time(); 
+var_dump($_SESSION);
+//$_SESSION['informations'] =array('page1'=>'souris','page2'=>'robot'); 
+$_SESSION['page']
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
