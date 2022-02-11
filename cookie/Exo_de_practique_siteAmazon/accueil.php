@@ -1,13 +1,43 @@
-<?php session_start(); // à mettre tout en haut de page
+<?php 
 // c'est un tableau... 
 // a chaque fois on visite la page, on va mettre le temps comme un indicateur dans le tableau
 // page c'est un tableau
 // nomPage c'est un index dans le tableau
-$_SESSION['page']['accueil'] = time(); 
-var_dump($_SESSION);
-//$_SESSION['informations'] =array('page1'=>'souris','page2'=>'robot'); 
-$_SESSION['page']
-?>
+
+// Ouvrir/réactiver la session. 
+session_start(); 
+// Tester si la session est nouvelle (cad ouverte par 
+// l’appel session_start() ci-dessus) ou ancienne (cad ouverte 
+//par un appel antérieur à session_start()). 
+// Le mieux est de tester si une de nos variables de session 
+// est déjà enregistrée. 
+if (! isset($_SESSION['visites']) ) { 
+  // Variable 'visites' pas encore enregistrée. 
+  // => nouvelle session. 
+  $_SESSION['visites']['accueil'] = time(); 
+  var_dump($_SESSION['visites']['accueil']); 
+  echo '<br>';
+} else { 
+  // Variable "visites" déjà enregistrée. 
+  // arsort — Sort an array in descending order and maintain index association
+  arsort($_SESSION['visites']);
+  // => ancienne session. 
+  //var_dump($_SESSION['visites']); 
+  $arrPagesVisited = $_SESSION['visites'];
+  //ne stocker que le NOME de pages visites dans $tempsArr 
+  $tempsArr = [];
+  foreach ($arrPagesVisited  as $key => $value) {
+    // $key qui contient les nomes de pages visited
+    // $value qui contient 
+    $tempsArr[]=$key;
+  }
+  //afficher 3 derniers pages
+  for ($pagesVisited = 0; $pagesVisited <= 2; $pagesVisited++) {
+    echo $tempsArr[$pagesVisited];
+    echo '<br>';} 
+  } 
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +48,7 @@ $_SESSION['page']
 </head>
 <body>
     <h1>Wellcome to site AmaNhi</h1>
-<ul>
+    <ul>
         <li><a href="souris.php">Souris</a></li>
         <li><a href="robot.php">Robot</a></li>
         <li><a href="alteres.php">Altères</a></li>
@@ -27,5 +57,7 @@ $_SESSION['page']
         <li><a href="bracelet.php">Bracelet</a></li>
         <li><a href="montre.php">Montre</a></li>
     </ul>
+
+
 </body>
 </html>
