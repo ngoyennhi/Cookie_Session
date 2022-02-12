@@ -11,32 +11,19 @@ session_start();
 //par un appel antérieur à session_start()). 
 // Le mieux est de tester si une de nos variables de session 
 // est déjà enregistrée. 
+echo ('toto');
 $now = time();
-if ((!isset($_SESSION['visites']['souris'])) && ($_SESSION['visites']['souris']<$now)) { 
+//if ((!isset($_SESSION['visites']['souris'])) && ($_SESSION['visites']['souris']<$now)) { 
+  if ((!isset($_SESSION['visites']['souris'])) OR ($_SESSION['visites']['souris']<$now)) { 
   // Variable 'visites' pas encore enregistrée. 
   // => nouvelle session. 
   $_SESSION['visites']['souris'] = time(); 
-
-} ;
-  // Variable "visites" déjà enregistrée. 
-  // arsort — Sort an array in descending order and maintain index association
-  arsort($_SESSION['visites']);
-  // => ancienne session. 
-  //var_dump($_SESSION['visites']); 
-  $arrPagesVisited = $_SESSION['visites'];
-  //ne stocker que le NOME de pages visites dans $tempsArr 
-  $tempsArr = [];
-  foreach ($arrPagesVisited  as $key => $value) {
-    // $key qui contient les nomes de pages visited
-    // $value qui contient 
-    $tempsArr[]=$key;
-
-  };
-  //afficher 3 derniers pages
-  for ($pagesVisited = 0; $pagesVisited <= 2; $pagesVisited++) {
-    echo $tempsArr[$pagesVisited];
-    echo '<br>';} ;
-    session_destroy();
+  include('affichage.php');
+} else {
+    // Variable "visites" déjà enregistrée. 
+  include('affichage.php');
+}
+  
     ?>
 <!DOCTYPE html>
 <html lang="en">
