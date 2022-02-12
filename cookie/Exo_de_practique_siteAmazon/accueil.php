@@ -15,8 +15,8 @@ if (! isset($_SESSION['visites']) ) {
   // Variable 'visites' pas encore enregistrée. 
   // => nouvelle session. 
   $_SESSION['visites']['accueil'] = time(); 
-  var_dump($_SESSION['visites']['accueil']); 
-  echo '<br>';
+  // var_dump($_SESSION['visites']['accueil']); 
+  // echo '<br>';
 } else { 
   // Variable "visites" déjà enregistrée. 
   // arsort — Sort an array in descending order and maintain index association
@@ -36,6 +36,7 @@ if (! isset($_SESSION['visites']) ) {
     echo $tempsArr[$pagesVisited];
     echo '<br>';} 
   } 
+
     ?>
 
 <!DOCTYPE html>
