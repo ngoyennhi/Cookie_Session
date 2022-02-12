@@ -11,13 +11,13 @@ session_start();
 //par un appel antérieur à session_start()). 
 // Le mieux est de tester si une de nos variables de session 
 // est déjà enregistrée. 
-if (! isset($_SESSION['visites']) ) { 
+$now = time();
+if ((!isset($_SESSION['visites']['bracelet'])) && ($_SESSION['visites']['bracelet']<$now )) { 
   // Variable 'visites' pas encore enregistrée. 
   // => nouvelle session. 
   $_SESSION['visites']['bracelet'] = time(); 
-  var_dump($_SESSION['visites']['bracelet']); 
-
-} else { 
+ 
+} ;
   // Variable "visites" déjà enregistrée. 
   // arsort — Sort an array in descending order and maintain index association
   arsort($_SESSION['visites']);
@@ -31,12 +31,12 @@ if (! isset($_SESSION['visites']) ) {
     // $value qui contient 
     $tempsArr[]=$key;
 
-  }
+  };
   //afficher 3 derniers pages
   for ($pagesVisited = 0; $pagesVisited <= 2; $pagesVisited++) {
     echo $tempsArr[$pagesVisited];
-    echo '<br>';} 
-  } 
+    echo '<br>';} ;
+ 
     ?>
 
 
@@ -53,5 +53,6 @@ if (! isset($_SESSION['visites']) ) {
     <p>
         <a href="accueil.php">Retour</a>
     </p>
+    <p><a href="<?php echo 'destroy.php'; ?>">Destruction de la session</a></p>
 </body>
 </html>
