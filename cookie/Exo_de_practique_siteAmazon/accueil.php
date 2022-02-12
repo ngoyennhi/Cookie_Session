@@ -23,8 +23,8 @@ if ((!isset($_SESSION['visites']['accueil'])) && ($_SESSION['visites']['accueil'
   // arsort — Sort an array in descending order and maintain index association
   arsort($_SESSION['visites']);
   // => ancienne session. 
-  //var_dump($_SESSION['visites']); 
   $arrPagesVisited = $_SESSION['visites'];
+  var_dump($arrPagesVisited);
   //ne stocker que le NOME de pages visites dans $tempsArr 
   $tempsArr = [];
   foreach ($arrPagesVisited  as $key => $value) {
@@ -33,11 +33,13 @@ if ((!isset($_SESSION['visites']['accueil'])) && ($_SESSION['visites']['accueil'
     $tempsArr[]=$key;
   };
   //afficher 3 derniers pages
+  echo 'Page visited:';
+  echo '<br>';
   for ($pagesVisited = 0; $pagesVisited <= 2; $pagesVisited++) {
     echo $tempsArr[$pagesVisited];
     echo '<br>';} ;
-  
-    ?>
+  session_destroy();
+      ?>
 
 <!DOCTYPE html>
 <html lang="en">

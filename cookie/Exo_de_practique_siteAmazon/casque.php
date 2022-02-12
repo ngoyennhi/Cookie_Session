@@ -36,7 +36,7 @@ if ((!isset($_SESSION['visites']['casque'])) && ($_SESSION['visites']['casque']<
   for ($pagesVisited = 0; $pagesVisited <= 2; $pagesVisited++) {
     echo $tempsArr[$pagesVisited];
     echo '<br>';} ;
-
+    session_destroy();
     ?>
 
 <!DOCTYPE html>

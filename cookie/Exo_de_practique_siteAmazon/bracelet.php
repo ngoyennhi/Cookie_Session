@@ -36,7 +36,7 @@ if ((!isset($_SESSION['visites']['bracelet'])) && ($_SESSION['visites']['bracele
   for ($pagesVisited = 0; $pagesVisited <= 2; $pagesVisited++) {
     echo $tempsArr[$pagesVisited];
     echo '<br>';} ;
- 
+    session_destroy();
     ?>
 
 

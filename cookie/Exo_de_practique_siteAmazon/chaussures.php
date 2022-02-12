@@ -37,6 +37,7 @@ if ((!isset($_SESSION['visites']['chaussures'])) && ($_SESSION['visites']['chaus
     echo $tempsArr[$pagesVisited];
     echo '<br>';} 
  ;
+ session_destroy();
     ?>
     
 <!DOCTYPE html>
