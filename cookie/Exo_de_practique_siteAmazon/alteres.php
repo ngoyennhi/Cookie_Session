@@ -21,7 +21,6 @@ if ((!isset($_SESSION['visites']['alteres'])) OR ($_SESSION['visites']['alteres'
     // Variable "visites" déjà enregistrée. 
   include('affichage.php');
 }
-  
 
     ?>
 <!DOCTYPE html>

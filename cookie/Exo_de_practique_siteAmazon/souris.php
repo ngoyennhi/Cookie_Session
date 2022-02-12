@@ -11,7 +11,6 @@ session_start();
 //par un appel antérieur à session_start()). 
 // Le mieux est de tester si une de nos variables de session 
 // est déjà enregistrée. 
-echo ('toto');
 $now = time();
 //if ((!isset($_SESSION['visites']['souris'])) && ($_SESSION['visites']['souris']<$now)) { 
   if ((!isset($_SESSION['visites']['souris'])) OR ($_SESSION['visites']['souris']<$now)) { 

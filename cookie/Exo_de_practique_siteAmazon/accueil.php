@@ -1,25 +1,7 @@
 <?php 
-// c'est un tableau... 
-// a chaque fois on visite la page, on va mettre le temps comme un indicateur dans le tableau
-// page c'est un tableau
-// nomPage c'est un index dans le tableau
-// Ouvrir/réactiver la session. 
 session_start(); 
-// Tester si la session est nouvelle (cad ouverte par 
-// l’appel session_start() ci-dessus) ou ancienne (cad ouverte 
-//par un appel antérieur à session_start()). 
-// Le mieux est de tester si une de nos variables de session 
-// est déjà enregistrée. 
-$now = time();
-if ((!isset($_SESSION['visites']['accueil'])) OR ($_SESSION['visites']['accueil']<$now) ) { 
-  // Variable 'visites' pas encore enregistrée. 
-  // => nouvelle session. 
-  $_SESSION['visites']['accueil'] = time(); 
-  include('affichage.php');
-} else {
-    // Variable "visites" déjà enregistrée. 
-  include('affichage.php');
-}
+// Afficher les trois derniers articles consultés
+include('affichage.php');
     ?>
 
 <!DOCTYPE html>
@@ -42,6 +24,21 @@ if ((!isset($_SESSION['visites']['accueil'])) OR ($_SESSION['visites']['accueil'
         <li><a href="montre.php">Montre</a></li>
     </ul>
     <p><a href="<?php echo 'destroy.php'; ?>">Destruction de la session</a></p>
-
+    <br>
+    <?php
+echo 'Vous utilisez un navigateur de type: ';
+if (preg_match('/MSIE/', $_SERVER["HTTP_USER_AGENT"])) {
+    echo "Internet explorer";
+} else if (preg_match('/^Mozilla\//', $_SERVER["HTTP_USER_AGENT"])) {
+    echo "Netscape";
+} else if (preg_match('/^Opera\//', $_SERVER["HTTP_USER_AGENT"])) {
+    echo "Opera";
+} else if (preg_match('/^Safari\//', $_SERVER["HTTP_USER_AGENT"])) {
+  echo "Safari";
+}
+else {
+    echo "inconnu";
+}
+?>
 </body>
 </html>

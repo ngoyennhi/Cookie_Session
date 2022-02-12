@@ -3,17 +3,17 @@
   arsort($_SESSION['visites']);
   // => ancienne session. 
   $arrPagesVisited = $_SESSION['visites'];
-  //ne stocker que le NOME de pages visites dans $tempsArr 
-  $tempsArr = [];
+  //ne stocker que le NOME de pages visites dans $articles_vus 
+  $articles_vus = [];
   foreach ($arrPagesVisited  as $key => $value) {
     // $key qui contient les nomes de pages visited
     // $value qui contient 
-    $tempsArr[]=$key;
+    $articles_vus[]=$key;
   };
   //afficher 3 derniers pages
   echo '<br>';
-  echo 'Page visited:';
+  echo 'Trois derniers articles consultés:';
   echo '<br>';
   for ($pagesVisited = 0; $pagesVisited <= 2; $pagesVisited++) {
-    echo $tempsArr[$pagesVisited];
+    echo $articles_vus[$pagesVisited];
     echo '<br>';} ;
